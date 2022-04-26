@@ -2,46 +2,45 @@
 
 ## Úvod
 
-Cílem tohoto dokumentu je představit aplikaci chatbota rozděleného na kientskou a serverovou část a popsat jeho chování a jeho vazby na další prostředí
+Cílem tohoto dokumentu je představit aplikaci chatbota rozděleného na klientskou a serverovou část a popsat jeho chování a jeho vazby na další prostředí
 
 ## Popis
 
 ### Popis systémového prostředí
 
-Aplikace chatbota má dvě části: klientskou, která zprostředkovává grafické rozhraní pro uživatele, pro komunikaci s chatbotem a serverovou,která zpracovává dotazy a vrací odpovědi na otázky. Obě části běží odděleně a je možné je nahradit, komunikace je založena na společném inteface(rozhraní). Aplikace je přítupná veřejně na internetu, není proto potřeba inplementovat přihlašování. Základní jazyk aplikace je anglický a je možné jej rozšířit o další jazyky.
+Aplikace chatbota má dvě části: klientskou, která zprostředkovává grafické rozhraní pro uživatele, pro komunikaci s chatbotem a serverovou,která zpracovává dotazy a vrací odpovědi na otázky. Obě části běží odděleně a je možné je nahradit, komunikace je založena na společném inteface(rozhraní). Aplikace je přístupná  veřejně na internetu, není proto potřeba implementovat přihlašování. Základní jazyk aplikace je anglický a je možné jej rozšířit o další jazyky.
 
 ### Funkční požadavky klientské části
 
 - Požadavek je vyvolán zadáním dotazu do inputbox a odesláním dotazu pomocí klávesy enter, či pomocí tlačítka poslat
 - Posílá uživatelský vstup na server
-- Zobrazuje odpověďze serveru (plaintext a html kód)
+- Zobrazuje odpověď ze serveru (plaintext a html kód)
 - Zobrazuje i historii konverzace (pouze do obnovení prohlížeče)
 - Design webové stránky může být libovolný, důležitá je pouze  funkcionalita
 - Funguje na telefonu, tabletu a PC.
 
 ![Náčrt klientské části](https://i.imgur.com/5GwnULM.png)
 
-### Funkční požadavky servrové části
+### Funkční požadavky serverové části
 
-- Servrová část musí být navržena tak, aby mohla být jednoduše rozšiřitelná o další požadavky a daší jazyky
+- Servrová část musí být navržena tak, aby mohla být jednoduše rozšiřitelná o další požadavky a další jazyky
 
 | Požadavek | Klíčové slovo/klíčová slova | Odpověď serveru | Poznámka |
 | --- | --- | --- | --- |
-| vypsání jména chatbota | name | Hi, nice to meet you! My name is $chatbot_name | $chatbot_name je proměná, kde bude určeno, jak se chatbot jmenuje |
-| vypsání času na serveru | time | The time is $HH:MM:SS, at least at my place. | $HH:MM:SS, je proměná ukazující aktuální čas na serveru, zároveň by časměl být zobrazen v tomto fotmátu |
-| vypsání kurzu EURA s možností vypsat i zpětně | exchnge rate, euro, exchange | Exchange rate is $rate CZK for 1 EUR/On $date the exchnage rate was $rate CZK for 1 EUR | proměná $rate říka kurz koruny k euru, proměná $DD.MM.YYY se řídí tím, že pokud zadal užiatel datum vypíše mu k danému dni kurz |
-| vypsání nápovědy | help | Here is what I can do: -help - I tell you, what I can do - time -  I tel you, what time is it, at least at my place. - exchange rate - I tell you an exchange rate betwean EUR and CZK |  |
+| vypsání jména chatbota | name | Hi, nice to meet you! My name is $chatbot_name | $chatbot_name je proměnná, kde bude určeno, jak se chatbot jmenuje |
+| vypsání času na serveru | time | The time is $HH:MM:SS, at least at my place. | $HH:MM:SS, je proměnná ukazující aktuální čas na serveru, zároveň by časměl být zobrazen v tomto fotmátu |
+| vypsání kurzu EURA s možností vypsat i zpětně | exchange rate, euro, exchange | Exchange rate is $rate CZK for 1 EUR/On $date the exchanage rate was $rate CZK for 1 EUR | proměnná $rate říka kurz koruny k euru, proměnná $DD.MM.YYY se řídí tím, že pokud zadal užiatel datum vypíše mu k danému dni kurz |
+| vypsání nápovědy | help | Here is what I can do: -help - I tell you, what I can do - time -  I tel you, what time is it, at least at my place. - exchange rate - I tell you an exchange rate between EUR and CZK |  |
 
 ### Další požadavky
 
 - Aplikace musí být přístupná pro více uživatelů najednou
-- Musí mít ochranu proti velkému množsví požadavků
+- Musí mít ochranu proti velkému množství požadavků
 
 ### Designová a implementační omezení
 
 - hardwarové omezení - aplikace poběží na Heroku, které nabízí určité služby zdarma, aplikace je však omezena náročností
-- serverová část v jazyce python + flask server
-- iterface mezi serverovou a klientskou částí
+- interface mezi serverovou a klientskou částí
 - formát komunikace serveru s klientem je json (následuje ukázka, jak by měla vypadat)
 
 ```
@@ -65,7 +64,7 @@ Aplikace chatbota má dvě části: klientskou, která zprostředkovává grafic
 
 ### Závislosti
 
-- API od ČNB na získání jednotlivých kurzů v podobě, která fungvala k 17.4.2022 na [https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt](https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt)  (ukázka jak by měl být dormát následuje)
+- API od ČNB na získání jednotlivých kurzů v podobě, která fungvala k 17.4.2022 na [https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt](https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt)  (ukázka jak by měl formát následuje)
 
 ```
 14.04.2022 #74
@@ -104,7 +103,7 @@ USA|dolar|1|USD|22,451
 Velká Británie|libra|1|GBP|29,458
 ```
 
-- zapezpečení a stejný interface následujících opensource projektů: python, flask, javascript, pytest (pořípadě další)
+- zabezpečení  a stejný interface následujících opensource projektů: python, flask, javascript, pytest (pořípadě další)
 - poskytování služeb následujících firem: Github, Heroku
 
 ## Testování
