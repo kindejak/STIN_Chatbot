@@ -3,6 +3,7 @@ package com.kindejak.javalinapp.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kindejak.javalinapp.language.LanguageKeyword;
+import com.kindejak.javalinapp.response.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -34,7 +35,7 @@ public class ResponseFactory{
             throw new Error("Language doesn't match");
         }
         String responseKeyName = findResponseKeyName(request.getMessage());
-        String className = "com.kindejak.javalinapp.response" + responseKeyName + "Response";
+        String className = "com.kindejak.javalinapp.response." + responseKeyName + "Response";
         Class<?> responseClass = null;
         try
         {
@@ -42,11 +43,13 @@ public class ResponseFactory{
         }
         catch( ClassNotFoundException e )
         {
-            responseClass = Class.forName("com.kindejak.javalinapp.response.BasicResponse");
+            responseClass = Class.forName("com.kindejak.javalinapp.response.BaseResponse");
         }
         Constructor<?> constructor =
-                responseClass.getConstructor(String.class,String.class,String.class);
-        return constructor.newInstance(request.getBot_id(),request.getLanguage(),responseKeyName);
+                responseClass.getConstructor(String.class,String.class);
+        Response response = (Response) constructor.newInstance(request.getBot_id(),request.getLanguage());
+        response.setNewMessage(responseKeyName);
+        return response;
         
     }
 

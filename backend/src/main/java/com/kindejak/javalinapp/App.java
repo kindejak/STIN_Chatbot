@@ -16,11 +16,13 @@ public class App
     public static void main( String[] args )
     {
 
-        Javalin app = Javalin.create().start(7070);
+        Javalin app = Javalin
+                .create(config -> config.enableCorsForAllOrigins())
+                .start(7070);
         app.get("/", ctx -> ctx.result("ok"));
         app.error(404, ctx -> {
             ctx.result("There is no operation supported at the URI path and HTTP method you specified in the request.");
         });
-        app.get("/request", RequestHandeler.fetchResponse);
+        app.post("/request", RequestHandeler.fetchResponse);
     }
 }
