@@ -1,15 +1,18 @@
 package com.kindejak.javalinapp.language;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 
+@NoArgsConstructor
+@ToString
 public class LanguageKeyword {
-    @Getter private String name;
-    @Getter private ArrayList<String> keywords;
+    @Getter @Setter
+    private String name;
+    @Getter @Setter
+    private ArrayList<String> keywords;
 
-    public LanguageKeyword(String name, ArrayList<String> keywords) {
-        this.name = name;
-        this.keywords = keywords;
-    }
 }

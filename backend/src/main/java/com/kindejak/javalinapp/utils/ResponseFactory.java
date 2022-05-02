@@ -1,16 +1,19 @@
 package com.kindejak.javalinapp.utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kindejak.javalinapp.language.LanguageKeyword;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class ResponseFactory{
-    private String language;
-    private List<LanguageKeyword> keywords;
+    private final String language;
+    private final List<LanguageKeyword> keywords;
 
 
     public ResponseFactory(String json,String language) throws IOException {
@@ -25,21 +28,38 @@ public class ResponseFactory{
      * @return
      * @throws MissingResourceException
      */
-    public Object getResponse(@NotNull BasicRequest request) throws MissingResourceException {
-        if(!language.equals(request.getLang())){
+    public Object getResponse(@NotNull BasicRequest request) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, JsonProcessingException {
+
+        if(!language.equals(request.getLanguage())){
             throw new Error("Language doesn't match");
         }
-        String responseKey = findResponseKeyName(request.getMessage());
+        String responseKeyName = findResponseKeyName(request.getMessage());
+        String className = "com.kindejak.javalinapp.response" + responseKeyName + "Response";
+        Class<?> responseClass = null;
+        try
+        {
+            responseClass = Class.forName(className);
+        }
+        catch( ClassNotFoundException e )
+        {
+            responseClass = Class.forName("com.kindejak.javalinapp.response.BasicResponse");
+        }
+        Constructor<?> constructor =
+                responseClass.getConstructor(String.class,String.class,String.class);
+        return constructor.newInstance(request.getBot_id(),request.getLanguage(),responseKeyName);
+        
     }
 
     private String findResponseKeyName(String message){
         for(String word : message.split(" ")){
-            LanguageKeyword languageKeyword = keywords.stream().filter(k -> k.getKeywords().contains(word)).findFirst().orElse(null);
+            LanguageKeyword languageKeyword = keywords.stream().filter(
+                    k -> k.getKeywords().contains(word.toLowerCase(Locale.ROOT)))
+                    .findFirst().orElse(null);
             if (languageKeyword != null){
                 return languageKeyword.getName();
             }
         }
-        return "unrecognised_response";
+        return "Unrecognised";
     }
 
 }

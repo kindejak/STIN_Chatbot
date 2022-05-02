@@ -1,18 +1,27 @@
 [
   {
-    "name" : "Name",
-    "keywords" : ["name"]
+    "name":"Name",
+    "keywords":[
+      "name"
+    ]
   },
   {
-    "name" : "Time",
-    "keywords" : ["time"]
+    "name":"Time",
+    "keywords":[
+      "time"
+    ]
   },
   {
-    "name" : "Exchange",
-    "keywords" : ["exchange","euro"]
+    "name":"Exchange",
+    "keywords":[
+      "exchange",
+      "euro"
+    ]
   },
   {
-    "name" : "Help",
-    "keywords" : ["help"]
+    "name":"Help",
+    "keywords":[
+      "help"
+    ]
   }
 ]
