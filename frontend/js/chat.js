@@ -17,15 +17,31 @@ function firstBotMessage() {
 // parse message from the user and fetch the response from the bot
 function sendReply(){
     let message = document.getElementById('chat-input').value
-    message = message.replace(/<[^>]+>/g, '')
+    message = message.replace(/<[^>]+>.?/g, '')
     if (message != '') {
         newMessage(message,'User',true)
     }
     let chatinput = document.getElementById('chat-input')
     document.getElementById('chat-input').value = ""
-    document.getElementById('inputbox').scrollIntoView({ block: 'end',  behavior: 'smooth' });
+    document.getElementById('inputbox').scrollIntoView({ block: 'end',  behavior: 'smooth' })
 
-    fetch("js\\response.json") //change this to the url of the json file
+    fetch("js\\request.json") //change this to the url of the json file
+    .then(response => response.json())
+    .then(data => {
+        data.message = message
+        request = data
+        fetchAPI(data)
+    })
+}
+
+function fetchAPI(data){
+    fetch("http://localhost:7070/request", {
+        method: "POST",
+        headers: {
+            "ContentType": "application/json",
+        },
+        body : JSON.stringify(data)
+    }) //change this to the url of the json file
         .then(response => response.json())
         .then(data => {
             if(data.image != ""){
@@ -35,7 +51,6 @@ function sendReply(){
             }
         })
 }
-
 
 // display messages from the bot and user
 function newMessage(text,user,darker){
