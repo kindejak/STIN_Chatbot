@@ -11,6 +11,6 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 # PACKAGE STAGE
 #
 FROM openjdk:8-jre-slim
-COPY --from=build /usr/src/app/target/javalin-chatbot-1.0-SNAPSHOT.jar /usr/app/javalin-chatbot-1.0-SNAPSHOT.jar
+COPY --from=build /usr/src/app/target/javalin-chatbot-1.0-jar-with-dependencies.jar /usr/app/javalin-chatbot-1.0-jar-with-dependencies.jar
 EXPOSE 7070
-CMD ["java","-jar","/usr/app/javalin-chatbot-1.0-SNAPSHOT.jar"]
+CMD ["java","-jar","/usr/app/javalin-chatbot-1.0-jar-with-dependencies.jar"]

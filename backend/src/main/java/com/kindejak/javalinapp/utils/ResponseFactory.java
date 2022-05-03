@@ -6,10 +6,10 @@ import com.kindejak.javalinapp.language.LanguageKeyword;
 import com.kindejak.javalinapp.response.Response;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URISyntaxException;
 import java.util.*;
 
 public class ResponseFactory{
@@ -17,10 +17,11 @@ public class ResponseFactory{
     private final List<LanguageKeyword> keywords;
 
 
-    public ResponseFactory(String json,String language) throws IOException {
+    public ResponseFactory(String language) throws IOException, URISyntaxException {
         this.language = language;
         ObjectMapper objectMapper = new ObjectMapper();
-        this.keywords = Arrays.asList(objectMapper.readValue(new File(json), LanguageKeyword[].class));
+        FileGetter fg = new FileGetter();
+        this.keywords = Arrays.asList(objectMapper.readValue(fg.getFileFromResourceAsStream("language/Map_" + language + ".json"), LanguageKeyword[].class));
     }
 
     /**
