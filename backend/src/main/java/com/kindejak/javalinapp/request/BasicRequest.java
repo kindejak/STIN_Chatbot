@@ -1,4 +1,4 @@
-package com.kindejak.javalinapp.utils;
+package com.kindejak.javalinapp.request;
 
 import lombok.Getter;
 import lombok.Setter;

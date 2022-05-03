@@ -1,6 +1,7 @@
 package com.kindejak.javalinapp.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kindejak.javalinapp.request.BasicRequest;
 import io.javalin.http.Handler;
 
 

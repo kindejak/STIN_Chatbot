@@ -2,10 +2,12 @@ package com.kindejak.javalinapp.response;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+@ToString
 public class BaseResponse extends Response {
     @Getter @Setter
     protected String bot_id; //wrong naming convention due to required output to json object

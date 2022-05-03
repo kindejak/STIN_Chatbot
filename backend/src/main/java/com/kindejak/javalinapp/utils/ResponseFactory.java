@@ -3,6 +3,7 @@ package com.kindejak.javalinapp.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kindejak.javalinapp.language.LanguageKeyword;
+import com.kindejak.javalinapp.request.BasicRequest;
 import com.kindejak.javalinapp.response.Response;
 import org.jetbrains.annotations.NotNull;
 
@@ -24,12 +25,7 @@ public class ResponseFactory{
         this.keywords = Arrays.asList(objectMapper.readValue(fg.getFileFromResourceAsStream("language/Map_" + language + ".json"), LanguageKeyword[].class));
     }
 
-    /**
-     *
-     * @param request
-     * @return
-     * @throws MissingResourceException
-     */
+
     public Object getResponse(@NotNull BasicRequest request) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, JsonProcessingException {
 
         if(!language.equals(request.getLanguage())){
