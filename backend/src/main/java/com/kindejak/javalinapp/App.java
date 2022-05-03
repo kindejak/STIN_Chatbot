@@ -1,11 +1,8 @@
 package com.kindejak.javalinapp;
 
-import com.kindejak.javalinapp.utils.BasicRequest;
 import com.kindejak.javalinapp.utils.RequestHandeler;
-import com. kindejak.javalinapp.utils.ResponseFactory;
 import io.javalin.Javalin;
 
-import java.io.IOException;
 
 /**
  * Main class of the Chatbot App
