@@ -35,7 +35,7 @@ function sendReply(){
 }
 
 function fetchAPI(data){
-    fetch("http://localhost:7070/request", {
+    fetch("https://superchatbot.onrender.com/request", {
         method: "POST",
         headers: {
             "ContentType": "application/json",
