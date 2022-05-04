@@ -1,5 +1,6 @@
 package com.kindejak.javalinapp.response;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,5 +22,9 @@ class NameResponseTest {
         nameResponseUnderTest.setNewMessage("Name","name");
         assertEquals("Hi, nice to meet you! My name is SuperBot.",nameResponseUnderTest.getMessage());
         // Verify the results
+    }
+
+    void test_get_string(){
+        Assertions.assertEquals("BaseResponse(bot_id=1, language=en, message=, image=)",nameResponseUnderTest.toString());
     }
 }

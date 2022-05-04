@@ -36,4 +36,8 @@ class ExchangeResponseTest {
         exchangeResponseUnderTest.setNewMessage(exchange, message);
         Assertions.assertEquals("On 01.01.2010 the exchange rate was 26,465 CZK for 1 EUR",exchangeResponseUnderTest.getMessage());
     }
+
+    void test_get_string(){
+        Assertions.assertEquals("BaseResponse(bot_id=1, language=en, message=, image=)",exchangeResponseUnderTest.toString());
+    }
 }
