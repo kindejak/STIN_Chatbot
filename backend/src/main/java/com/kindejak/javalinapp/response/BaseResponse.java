@@ -23,7 +23,7 @@ public class BaseResponse extends Response {
         this.language = language;
     }
 
-    public void setNewMessage(String responseKey) {
+    public void setNewMessage(String responseKey, String message) {
         Locale locale = new Locale(language);
         ResourceBundle languageBundle = ResourceBundle.getBundle("com.kindejak.javalinapp.language.LanguageResource", locale);
         this.message = languageBundle.getString(responseKey);

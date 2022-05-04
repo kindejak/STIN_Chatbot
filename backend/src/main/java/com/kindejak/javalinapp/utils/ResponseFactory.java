@@ -45,7 +45,7 @@ public class ResponseFactory{
         Constructor<?> constructor =
                 responseClass.getConstructor(String.class,String.class);
         Response response = (Response) constructor.newInstance(request.getBot_id(),request.getLanguage());
-        response.setNewMessage(responseKeyName);
+        response.setNewMessage(responseKeyName,request.getMessage());
         return response;
         
     }
