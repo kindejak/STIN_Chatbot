@@ -10,22 +10,6 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 
-      uses: actions/setup-java@v3
-      with:
-        java-version: '8'
-        distribution: 'adopt'
-    - name: Build with Maven
-      run: mvn test jacoco:report
-    - name: Upload to Codecov
-      env:
-        CODECOV_TOKEN: $
-        run: bash <(curl -s https://codecov.io/bash)
-    
   build:
     runs-on: ubuntu-latest
     steps:
@@ -35,7 +19,14 @@ jobs:
       with:
         java-version: '8'
         distribution: 'adopt'
-        cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
       working-directory: backend
+    - name: Build with Maven
+      run: mvn test jacoco:report
+      working-directory: backend
+    - name: Upload coverage reports to Codecov with GitHub Action
+      uses: codecov/codecov-action@v3
+      with:
+        flags: backend
+  
