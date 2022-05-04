@@ -1,5 +1,6 @@
 package com.kindejak.javalinapp.language;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +13,7 @@ import static org.junit.Assert.assertEquals;
 class LanguageResourceTest {
 
 
+   /*
     @Test
     void testUnknownLanguage() {
         // Setup
@@ -21,6 +23,7 @@ class LanguageResourceTest {
 
         // Verify the results
     }
+    */
 
     @Test
     void testKnownLanguage() {

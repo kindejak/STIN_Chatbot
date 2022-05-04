@@ -79,3 +79,4 @@ fabric.properties
 # target
 target/
 backend/.idea/intellij-javadocs-4.0.1.xml
+backend/.idea/encodings.xml
