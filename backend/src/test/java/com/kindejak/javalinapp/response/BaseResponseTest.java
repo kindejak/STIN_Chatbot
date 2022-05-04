@@ -1,5 +1,6 @@
 package com.kindejak.javalinapp.response;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,5 +25,9 @@ class BaseResponseTest {
                     baseResponseUnderTest.toString());
 
         // Verify the results
+    }
+
+    void test_get_string(){
+        Assertions.assertEquals("BaseResponse(bot_id=1, language=en, message=, image=)",baseResponseUnderTest.toString());
     }
 }
