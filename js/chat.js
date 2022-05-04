@@ -23,7 +23,7 @@ function sendReply(){
     }
     let chatinput = document.getElementById('chat-input')
     document.getElementById('chat-input').value = ""
-    document.getElementById('inputbox').scrollIntoView({ block: 'end',  behavior: 'smooth' })
+    document.getElementById('end').scrollIntoView({ block: 'end',  behavior: 'smooth' })
 
     fetch("js\\request.json") //change this to the url of the json file
     .then(response => response.json())
