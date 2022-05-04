@@ -18,8 +18,8 @@ class NameResponseTest {
     void testSetNewMessage() {
         // Setup
         // Run the test
-        nameResponseUnderTest.setNewMessage("Name");
-        assertEquals("BaseResponse(bot_id=1, language=en, message=Hi, nice to meet you! My name is SuperBot., image=)",nameResponseUnderTest.toString());
+        nameResponseUnderTest.setNewMessage("Name","name");
+        assertEquals("Hi, nice to meet you! My name is SuperBot.",nameResponseUnderTest.getMessage());
         // Verify the results
     }
 }

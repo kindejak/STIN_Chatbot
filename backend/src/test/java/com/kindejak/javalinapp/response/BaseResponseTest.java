@@ -19,7 +19,7 @@ class BaseResponseTest {
         // Setup
         // Run the test
 
-        baseResponseUnderTest.setNewMessage("Help");
+        baseResponseUnderTest.setNewMessage("Help","help");
         assertEquals("BaseResponse(bot_id=1, language=en, message=Here is what I can do: <br>-help - I tell you, what I can do <br>-time - I tel you, what time is it, at least at my place.<br>-exchange rate - I tell you an exchange rate between EUR and CZK <br>-name - I tell you my name, image=)",
                     baseResponseUnderTest.toString());
 
