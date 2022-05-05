@@ -14,7 +14,7 @@ public class BaseResponse extends Response {
     @Getter @Setter
     protected String language;
     @Getter @Setter
-    protected String message;
+    protected String message = "";
     @Getter @Setter
     protected String image = "";
 

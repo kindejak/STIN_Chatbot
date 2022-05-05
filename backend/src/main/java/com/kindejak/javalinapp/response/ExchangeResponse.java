@@ -25,6 +25,7 @@ public class ExchangeResponse extends BaseResponse{
         String dateString = parseDateLikeString(message);
         if(dateString == null) {
             this.message = languageBundle.getString("ExchangeDateUnknown");
+            return;
         }
 
         LocalDate localDate = parseDate(dateString);
@@ -41,7 +42,7 @@ public class ExchangeResponse extends BaseResponse{
     }
 
     private String parseDateLikeString(String message){
-        Pattern pattern = Pattern.compile("(\\d{1,2}(\\.|-|/)\\d{1,2}(\\.|-|/)\\d{4})");
+        Pattern pattern = Pattern.compile("(\\b\\d{1,2}(\\.|-|/)\\d{1,2}(\\.|-|/)\\d{4}\\b)");
         Matcher matcher = pattern.matcher(message);
         if(matcher.find()){
             return matcher.group(1);

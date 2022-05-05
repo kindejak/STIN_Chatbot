@@ -27,6 +27,7 @@ class BaseResponseTest {
         // Verify the results
     }
 
+    @Test
     void test_get_string(){
         Assertions.assertEquals("BaseResponse(bot_id=1, language=en, message=, image=)",baseResponseUnderTest.toString());
     }
