@@ -39,4 +39,9 @@ class AppTest {
             Assertions.assertEquals("{\"bot_id\":\"1\",\"language\":\"en\",\"message\":\"On 01.01.2010 the exchange rate was 26,465 CZK for 1 EUR\",\"image\":\"\"}",resp.body().string());
         });
     }
+
+    @Test
+    void mainApp(){
+        Assertions.assertDoesNotThrow(() -> App.main(new String[]{}));
+    }
 }
