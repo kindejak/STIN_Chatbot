@@ -12,7 +12,7 @@ class ExchangeResponseTest {
     private ExchangeResponse exchangeResponseUnderTest;
 
     @BeforeEach
-    void setUp() {
+    void set_up() {
         exchangeResponseUnderTest = new ExchangeResponse("1", "en");
     }
 

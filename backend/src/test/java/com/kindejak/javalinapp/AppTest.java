@@ -4,7 +4,6 @@ import com.kindejak.javalinapp.request.BasicRequest;
 import com.kindejak.javalinapp.utils.RequestHandeler;
 import io.javalin.testtools.TestUtil;
 import okhttp3.Response;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
