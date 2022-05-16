@@ -19,7 +19,7 @@ class TimeResponseTest {
     @CsvSource({"Time, what time is it?",
             "Time, time!",
             "Time, do you know what time is it?"})
-    void testSetNewMessage(String exchange, String message) {
+    void test_set_new_message(String exchange, String message) {
         // Setup
         // Run the test
         timeResponseUnderTest.setNewMessage(exchange, message);

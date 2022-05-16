@@ -19,6 +19,13 @@
     ]
   },
   {
+    "name":"ExchangeRecommendation",
+    "keywords":[
+      "tips",
+      "recommendation"
+    ]
+  },
+  {
     "name":"Help",
     "keywords":[
       "help"

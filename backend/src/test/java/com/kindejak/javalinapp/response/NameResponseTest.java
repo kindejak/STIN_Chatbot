@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
 
 class NameResponseTest {
 
@@ -16,11 +15,11 @@ class NameResponseTest {
     }
 
     @Test
-    void testSetNewMessage() {
+    void test_set_new_message() {
         // Setup
         // Run the test
         nameResponseUnderTest.setNewMessage("Name","name");
-        assertEquals("Hi, nice to meet you! My name is SuperBot.",nameResponseUnderTest.getMessage());
+        Assertions.assertEquals("Hi, nice to meet you! My name is SuperBot.",nameResponseUnderTest.getMessage());
         // Verify the results
     }
 

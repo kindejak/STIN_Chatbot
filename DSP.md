@@ -116,3 +116,7 @@ Velká Británie|libra|1|GBP|29,458
 
 - klient bude mít mnoho požadavků na poslední chvíli
 - přepracovanost, kvůli ostatním projektům → nestihnutí deadlineu k dokončení projektu
+
+## Přílohy
+
+- [DSP (Dokument specifikace požadavků) - příloha č. 01](DSP_priloha01.md)

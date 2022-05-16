@@ -3,11 +3,10 @@ package com.kindejak.javalinapp.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kindejak.javalinapp.request.BasicRequest;
 import com.kindejak.javalinapp.response.BaseResponse;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-import static org.junit.Assert.assertEquals;
 
 class ResponseFactoryTest {
 
@@ -28,7 +27,7 @@ class ResponseFactoryTest {
 
         // Run the test
         final BaseResponse result = (BaseResponse) responseFactoryUnderTest.getResponse(request);
-        assertEquals("Hi, nice to meet you! My name is SuperBot.",result.getMessage());
+        Assertions.assertEquals("Hi, nice to meet you! My name is SuperBot.",result.getMessage());
         // Verify the results
     }
 
