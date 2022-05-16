@@ -13,6 +13,8 @@ public class LanguageResource_en extends ListResourceBundle {
                 {"Exchange","Exchange rate is $rate CZK for 1 EUR"},
                 {"ExchangeDate","On $date the exchange rate was $rate CZK for 1 EUR"},
                 {"ExchangeDateUnknown","I don't know exchange rate for this date"},
+                {"ExchangeRecommendationPositive","In my honest opinion it's great time to exchange money, because between $date1 and $date2 exchange rate changed by $change% (my threshold is set to 10%)"},
+                {"ExchangeRecommendationNegative","Sorry I think you shouldn't exchange money because between $date1 and $date2 exchange rate changed by $change% (my threshold is set to 10%)"},
                 {"Help","Here is what I can do: <br>-help - I tell you, what I can do <br>-time - I tel you, what time is it, at least at my place.<br>-exchange rate - I tell you an exchange rate between EUR and CZK <br>-name - I tell you my name"}
         };
     }
