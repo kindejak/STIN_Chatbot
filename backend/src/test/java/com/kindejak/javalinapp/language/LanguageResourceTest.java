@@ -26,7 +26,7 @@ class LanguageResourceTest {
         // Setup
         // Run the test
         ResourceBundle languageBundle = ResourceBundle.getBundle("com.kindejak.javalinapp.language.LanguageResource", new Locale("en"));
-        Assertions.assertEquals(7,Collections.list(languageBundle.getKeys()).size());
+        Assertions.assertEquals(9,Collections.list(languageBundle.getKeys()).size());
 
         // Verify the results
     }
