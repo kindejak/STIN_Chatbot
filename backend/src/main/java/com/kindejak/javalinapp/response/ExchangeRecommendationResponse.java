@@ -3,6 +3,7 @@ package com.kindejak.javalinapp.response;
 import com.kindejak.javalinapp.utils.RateGetter;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -39,10 +40,11 @@ public class ExchangeRecommendationResponse extends BaseResponse{
     private String formatExchangeRecommendationMessage(String recommendation, LocalDate date1, LocalDate date2,double change){
         String date1String = date1.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         String date2String = date2.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        DecimalFormat df = new DecimalFormat("0.00");
+        NumberFormat nf = NumberFormat.getInstance(Locale.ENGLISH);
+        nf.setMaximumFractionDigits(2);
         return recommendation.replace("$date1",date1String)
                 .replace("$date2",date2String)
-                .replace("$change",df.format(change*100) + "");
+                .replace("$change",nf.format(change*100) + "");
     }
 
     private LocalDate getWorkday(LocalDate date){
