@@ -8,7 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="javalin-playground" />
-        <module name="backend" />
+        <module name="javalin-chatbot" />
       </profile>
     </annotationProcessing>
   </component>

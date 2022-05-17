@@ -22,11 +22,5 @@ jobs:
     - name: test
       run: mvn test jacoco:report
       working-directory: backend
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-      working-directory: backend
     - name: Upload coverage reports to Codecov with GitHub Action
       uses: codecov/codecov-action@v3
-      with:
-        version: v0.1.15
-        fixes: "backend/::"
